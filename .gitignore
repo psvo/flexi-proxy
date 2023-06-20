@@ -1,4 +1,7 @@
+/.direnv/
+/.idea/
+
 /flexi-proxy
 /flexi-proxy.exe
 /flexi-proxy.toml
-/.idea/
+/result
