@@ -106,6 +106,7 @@ type Config struct {
 	ConnectTimeoutMillis int
 	ReadTimeoutMillis    int
 	WriteTimeoutMillis   int
+	KeepAliveMillis      int
 	Verbosity            verbosity
 	Rules                []Rule
 }
@@ -122,6 +123,10 @@ func (c *Config) ReadTimeout() time.Duration {
 
 func (c *Config) WriteTimeout() time.Duration {
 	return time.Duration(c.WriteTimeoutMillis) * time.Millisecond
+}
+
+func (c *Config) KeepAlive() time.Duration {
+	return time.Duration(c.KeepAliveMillis) * time.Millisecond
 }
 
 func (e *Environment) ResolveProxyRule(normalizedDomainName string, ip net.IP) *Rule {

@@ -44,7 +44,8 @@ type dialerFunc func(ctx context.Context, network, address string) (conn net.Con
 func mkDialerFunc(env *environment.Environment) dialerFunc {
 	cfg := env.Config()
 	netDialer := net.Dialer{
-		Timeout: cfg.ConnectTimeout(),
+		Timeout:   cfg.ConnectTimeout(),
+		KeepAlive: cfg.KeepAlive(),
 	}
 	return func(ctx context.Context, network, address string) (conn net.Conn, err error) {
 		defer func() {
